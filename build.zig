@@ -69,7 +69,7 @@ fn libTracy(b: *std.Build, properties: anytype) *std.Build.Step.Compile {
     lib.addIncludePath(.{ .path = "dep/tracy.git/public/" });
     lib.addCSourceFile(.{
         .file = .{ .path = "dep/tracy.git/public/TracyClient.cpp" },
-        .flags = &.{ "-Wall", "-Wextra", "-Wshadow" },
+        .flags = &.{ "-Wall", "-Wextra", "-Wshadow", "-fno-sanitize=undefined" },
     });
     lib.pie = true;
     lib.linkLibCpp();
